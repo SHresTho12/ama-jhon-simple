@@ -11,17 +11,17 @@ const fake10 = fakeData.slice(0,10);
 const[products , setProducts] = useState(fake10);
 const [cart,setCart] = useState([])
 
-
 useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart); 
-    const previousCart = productKeys.map(pdkey =>{
-        const product = fakeData.find(pd=> pd.key === pdkey);
-        product.quantity = savedCart[pdkey];
+    const previousCart = productKeys.map(existingkey =>{
+        const product = fakeData.find(pd=> pd.key === existingkey);
+        product.quantity = savedCart[existingkey];
         return product;
     })
    setCart(previousCart);
 }, [])
+
 const handleAddProduct = (product) =>{
 const toBeaddedKey = product.key;
 const sameProduct = cart.find(pd => pd.key === product.key);
@@ -35,8 +35,9 @@ if(sameProduct){
 }
 
 else{
-    const newCart = [...cart,product];
     product.quantity = 1;
+    const newCart = [...cart,product];
+   
 }
 
    
@@ -44,6 +45,7 @@ else{
     
     addToDatabaseCart(product.key,count);
 }
+
 
     return (
         <div className = "shop-container">

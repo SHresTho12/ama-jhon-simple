@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
-    const cart = props.cart;
+ const cart = props.cart;
+// console.log(cart);
+// let totalPrice =0 ;
+// for(let i = 0; i<cart.length;i++){
+//     const product = cart[i];
+//     totalPrice = totalPrice + product.price*product.quantity;
 
-let totalPrice =0 ;
-for(let i = 0; i<cart.length;i++){
-    const product = cart[i];
-    totalPrice = totalPrice + product.price*product.quantity;
-
-}
+// }
 
 
-    // const totalPrice = cart.reduce((total,prd)=> total + prd.price*prd.quantity,0);
+    const totalPrice = props.cart.reduce((total,prd)=> total + prd.price*prd.quantity,0);
     let shipping = 0;
     if(totalPrice>35){
         shipping = 0;

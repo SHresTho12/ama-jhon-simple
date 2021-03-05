@@ -3,13 +3,15 @@ import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import Cart from '../Cart/Cart'
+import image from '../../images/giphy.gif'
 const Review = () => {
     const [cart,setCart] = useState([]);
+    const [orderPlaced,setOrderPlaced] =useState(false);
 
 const handlePlaceOrder = () =>{
 setCart([]);
     processOrder();
-    // console.log("hello");
+    setOrderPlaced(true);
 }
 
 const removeProduct = (productKey) =>{
@@ -32,6 +34,14 @@ removeFromDatabaseCart(productKey);
     })
 setCart(cartProduct);
 },[]);
+
+let thankyou;
+if(orderPlaced)
+{
+    thankyou = <img src = {image}></img>
+}
+
+
     return (
        
         <div className="shop-container">
@@ -41,6 +51,9 @@ setCart(cartProduct);
             
             cart.map(pd => <ReviewItems product = {pd} removeProduct = {removeProduct} key = {pd.key} ></ReviewItems>)
 
+            }
+            {
+              thankyou
             }
             </div>
            
