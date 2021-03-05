@@ -39,9 +39,9 @@ for(let i = 0; i<cart.length;i++){
             <p> Price :{totalPrice}</p>
             <p>Total Cost:{grandTotal} </p>
             <br/>
-            <Link to="/review">
-            <button className="cart-button">Review</button>
-            </Link>
+           {
+               props.children
+           }
         </div>
     );
 };

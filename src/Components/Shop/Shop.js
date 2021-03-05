@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import fakeData from '../../fakeData'
 import Product from '../product/Product';
 import Cart from '../Cart/Cart'
 import './Shop.css'
+import { Link } from 'react-router-dom';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 const Shop = () => {
 
@@ -54,7 +55,9 @@ else{
             </div>
             <div className="product-cart">
                 
-                <Cart cart = {cart}></Cart>
+                <Cart cart = {cart}> <Link to="/review">
+            <button className="cart-button">Review</button>
+            </Link></Cart>
             </div>
            
         </div>
