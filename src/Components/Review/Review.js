@@ -9,7 +9,7 @@ const Review = () => {
 const handlePlaceOrder = () =>{
 setCart([]);
     processOrder();
-    console.log("hello");
+    // console.log("hello");
 }
 
 const removeProduct = (productKey) =>{
